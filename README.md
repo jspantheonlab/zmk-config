@@ -115,8 +115,9 @@ is required, not just defensive.
 
 - **Sleep**: `CONFIG_ZMK_SLEEP=y`, idle timeout 5 minutes (`CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=300000`).
 - **OLED display**: enabled, with output/layer/WPM/battery status widgets.
-- **RGB underglow**: wired in hardware (`boards/nice_nano_v2.overlay`, 27-LED WS2812 strip) but
-  currently **disabled** at the firmware level (`CONFIG_ZMK_RGB_UNDERGLOW=n`); the startup
-  effect/brightness settings in `corne.conf` are inert until that's flipped to `y`.
+- **RGB underglow**: wired in hardware (`boards/nice_nano.overlay`, 27-LED WS2812 strip) but
+  currently **disabled** at the firmware level (`CONFIG_ZMK_RGB_UNDERGLOW=n`); the
+  enable flag, driver (`CONFIG_LED_STRIP`), and startup effect/brightness settings all live
+  together in `corne.conf`'s commented-out "enable underglow" block, ready to uncomment as a set.
 - **Bluetooth**: boosted TX power (`CONFIG_BT_CTLR_TX_PWR_PLUS_8=y`), 5 profile slots selectable
   from the lower layer (`BT0`-`BT4`), bond clearing reachable from the adjust layer.

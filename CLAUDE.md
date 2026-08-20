@@ -23,6 +23,14 @@ There is no local build here — firmware is compiled by GitHub Actions using ZM
 workflow (`.github/workflows/build.yml` → `zmkfirmware/zmk/.github/workflows/build-user-config.yml`).
 Push to any branch (or open a PR) and check the Actions tab for `.uf2` firmware artifacts.
 
+On every push to `main` specifically (not PRs, not other branches), a second job in the same
+workflow downloads the merged `firmware` artifact and publishes it as a GitHub Release tagged
+`firmware-<date>-<short-sha>`, so a permanent, easy-to-find `.uf2` download exists per merge
+without having to dig through Actions run history. `old-main-4116d59` (a long-lived rollback
+branch with only the original pre-UX-enhancements keymap) is release-enabled the same way, tagged
+`firmware-old-main-4116d59-<date>-<short-sha>` so it's clearly distinguished from `main`'s builds.
+Adding another long-lived release branch means adding its ref to this job's `if:` condition.
+
 `build.yaml` defines the GitHub Actions build matrix — currently one entry per half:
 `nice_nano@2//zmk` + `corne_left`, `nice_nano@2//zmk` + `corne_right`. Add board/shield combos here
 (or use `include:` for one-off cmake-arg variants) rather than creating new workflow jobs.

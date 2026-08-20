@@ -96,14 +96,15 @@
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 // |    `     |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | ESC/SHFT |  ;  |  :  |SCRN |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+// | ESC/SHFT |  ;  |  :  |SCRN |SPTL |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 // |   CTRL   |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
 //                        | GUI |     | SPC |   | ENT |     | ALT |
-// SCRN = Cmd+Shift+4 (macOS screenshot) as one keypress — avoids needing LGUI+LWR
-// simultaneously, which are both left-thumb-only keys and can't be held together.
+// SCRN = Cmd+Shift+4 (macOS screenshot), SPTL = Cmd+Space (Spotlight) — both as a single
+// keypress, since Cmd (LGUI), the number layer (LWR), and Space are ALL left-thumb-only
+// keys and can't be held together with one thumb.
                         bindings = <
    &kp  GRAVE  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &kp BSPC
-   &mt LSHFT ESC &kp SEMI &kp COLON &kp LG(LS(N4)) &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
+   &mt LSHFT ESC &kp SEMI &kp COLON &kp LG(LS(N4)) &kp LG(SPACE) &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
    &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
                              &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
                         >;

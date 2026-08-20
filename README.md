@@ -44,7 +44,7 @@ break that shortcut.
 
 ```
 |    `     |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-| ESC/SHFT |  ;  |  :  |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+| ESC/SHFT |  ;  |  :  |SCRN |SPTL |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 |   CTRL   |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
                        | GUI |     | SPC |   | ENT |     | ALT |
 ```
@@ -52,6 +52,12 @@ break that shortcut.
 `;` and `:` get dedicated one-tap keys here — `;` is otherwise only reachable via the home-row-mod
 key's tap (see below), and `:` previously had no direct binding at all (only Shift+`;` as a
 cross-hand chord).
+
+`SCRN` sends Cmd+Shift+4 (`&kp LG(LS(N4))`, macOS screenshot) and `SPTL` sends Cmd+Space
+(`&kp LG(SPACE)`, Spotlight) — both as a single keypress. Neither shortcut can actually be chorded
+by hand on this keymap: `LGUI`, `LWR` (the number layer), and `SPACE` are *all* left-thumb-only
+keys on the default layer, and one thumb can't hold two of them down at once. Composing the
+modifiers into one keycode sidesteps the conflict entirely.
 
 ### Adjust layer
 

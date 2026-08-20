@@ -30,20 +30,29 @@ so it can't be triggered by accident during normal typing or while using layer 1
 ### Lower layer
 
 ```
-|   TAB    |  1  |  2  |  3  |  4  |  5  |   |  6   |  7  |  8    |  9    |  0  | DEL |
-| ESC/SHFT |     | LFT | DWN |  UP | RGT |   | LFT  | DWN |  UP   | RGT   |     |     |
-|   CTRL   | BT0 | BT1 | BT2 | BT3 | BT4 |   | HOME | END | PG_UP | PG_DN |     |     |
+|   TAB    |  1  |  2  |  3  |  4  |  5  |   |  6   |  7  |  8    |  9    |  0    | DEL  |
+| ESC/SHFT | PLAY| LFT | DWN |  UP | RGT |   | LFT  | DWN |  UP   | RGT   | VOL-  | VOL+ |
+|   CTRL   | BT0 | BT1 | BT2 | BT3 | BT4 |   | HOME | END | PG_UP | PG_DN | PREV  | NEXT |
                        | GUI |     | SPC |   | ENT  |     |  ALT  |
 ```
+
+Media/transport keys (`PLAY`, `VOL-`/`VOL+`, `PREV`/`NEXT`) fill slots that were previously
+transparent. The thumb-row `&trans` entries under `LWR`/`RSE` are deliberately left alone — they're
+what let holding `LWR`+`RSE` together fall through to the Adjust layer (see below); repurposing them
+would break that shortcut.
 
 ### Raise layer
 
 ```
 |    `     |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-| ESC/SHFT |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+| ESC/SHFT |  ;  |  :  |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 |   CTRL   |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
                        | GUI |     | SPC |   | ENT |     | ALT |
 ```
+
+`;` and `:` get dedicated one-tap keys here — `;` is otherwise only reachable via the home-row-mod
+key's tap (see below), and `:` previously had no direct binding at all (only Shift+`;` as a
+cross-hand chord).
 
 ### Adjust layer
 

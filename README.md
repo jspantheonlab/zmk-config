@@ -1,7 +1,7 @@
 # zmk-config
 
 ZMK firmware user configuration for a **Corne** split keyboard (`corne_left` / `corne_right`)
-running on nice_nano_v2-compatible controllers. Firmware is built by GitHub Actions on every push
+running on nice!nano v2 controllers. Firmware is built by GitHub Actions on every push
 — see `CLAUDE.md` for build/CI details and repo layout. This file documents what's actually
 implemented in `config/corne.keymap` and `config/corne.conf`.
 
@@ -12,7 +12,7 @@ implemented in `config/corne.keymap` and `config/corne.conf`.
 | 0 | `default_layer` | Base QWERTY, home row mods, outer-column Shift/Ctrl |
 | 1 | `lower_layer` | Numbers, arrow/paging keys, Bluetooth profile select |
 | 2 | `raise_layer` | Symbols |
-| 3 | `adjust_layer` | Bootloader / factory reset / BT bond clear (hidden) |
+| 3 | `adjust_layer` | Bootloader / reset / BT clear (hidden), WASD, media keys |
 
 Layer 1 and 2 are reached with the momentary thumb keys (`LWR`, `RSE`). Layer 3 has **no dedicated
 key** — it's a tri-layer reached only by holding `LWR` + `RSE` together (see Adjust layer, below),
@@ -30,16 +30,15 @@ so it can't be triggered by accident during normal typing or while using layer 1
 ### Lower layer
 
 ```
-|   TAB    |  1  |  2  |  3  |  4  |  5  |   |  6   |  7  |  8    |  9    |  0    | DEL  |
-| ESC/SHFT | PLAY| LFT | DWN |  UP | RGT |   | LFT  | DWN |  UP   | RGT   | VOL-  | VOL+ |
-|   CTRL   | BT0 | BT1 | BT2 | BT3 | BT4 |   | HOME | END | PG_UP | PG_DN | PREV  | NEXT |
+|   TAB    |  1  |  2  |  3  |  4  |  5  |   |  6   |  7  |  8    |  9    |  0  | DEL |
+| ESC/SHFT |     | LFT | DWN |  UP | RGT |   | LFT  | DWN |  UP   | RGT   |     |     |
+|   CTRL   | BT0 | BT1 | BT2 | BT3 | BT4 |   | HOME | END | PG_UP | PG_DN |     |     |
                        | GUI |     | SPC |   | ENT  |     |  ALT  |
 ```
 
-Media/transport keys (`PLAY`, `VOL-`/`VOL+`, `PREV`/`NEXT`) fill slots that were previously
-transparent. The thumb-row `&trans` entries under `LWR`/`RSE` are deliberately left alone — they're
-what let holding `LWR`+`RSE` together fall through to the Adjust layer (see below); repurposing them
-would break that shortcut.
+The thumb-row `&trans` entries under `LWR`/`RSE` are deliberately left alone — they're what let
+holding `LWR`+`RSE` together fall through to the Adjust layer (see below); repurposing them would
+break that shortcut.
 
 ### Raise layer
 
@@ -60,8 +59,8 @@ Active only while `LWR` + `RSE` are both held down. Everything not listed below 
 (falls through to layer 2, then 1, then 0).
 
 ```
-| BOOT |     |     |     |     |     |   |     |     |     |     |     | BOOT  |
-|      |     |     |     |     |     |   |     |     |     |     |     |       |
+| BOOT |     |  W  |     |     |     |   | PLAY| VOL-| VOL+| PREV| NEXT| BOOT  |
+|      |  A  |  S  |  D  |     |     |   |     |     |     |     |     |       |
 | RESET|     |     |     |     |     |   |     |     |     |     |     | BTCLR |
                    |     |     |     |   |     |     |     |
 ```
@@ -73,6 +72,9 @@ Active only while `LWR` + `RSE` are both held down. Everything not listed below 
 - **RESET** (bottom-left): full device reset (`&sys_reset`).
 - **BTCLR** (bottom-right): clears the Bluetooth bond for the currently-selected profile
   (`&bt BT_CLR`), so the next connection to that profile starts a fresh pairing.
+- **W/A/S/D** (left hand): plain letter keys at their natural QWERTY physical spots, for quick
+  gaming-style access without leaving the Adjust chord.
+- **PLAY / VOL- / VOL+ / PREV / NEXT** (right hand, top row): media/transport control keys.
 
 ## Home row mods
 

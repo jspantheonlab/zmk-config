@@ -44,7 +44,7 @@ break that shortcut.
 
 ```
 |    `     |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-| ESC/SHFT |  ;  |  :  |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+| ESC/SHFT |  ;  |  :  |SCRN |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
 |   CTRL   |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
                        | GUI |     | SPC |   | ENT |     | ALT |
 ```
@@ -52,6 +52,11 @@ break that shortcut.
 `;` and `:` get dedicated one-tap keys here — `;` is otherwise only reachable via the home-row-mod
 key's tap (see below), and `:` previously had no direct binding at all (only Shift+`;` as a
 cross-hand chord).
+
+`SCRN` sends Cmd+Shift+4 (`&kp LG(LS(N4))`, macOS screenshot) as a single keypress. This exists
+because that shortcut can't actually be chorded manually on this keymap: Cmd (`LGUI`) and the
+number layer (`LWR`) are both left-thumb-only keys, and one thumb can't hold two keys down at
+once. Composing the modifiers into one keycode sidesteps the conflict entirely.
 
 ### Adjust layer
 

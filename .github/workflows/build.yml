@@ -7,7 +7,9 @@ jobs:
   release:
     name: Create GitHub Release
     needs: build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: |
+      github.event_name == 'push' &&
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/old-main-4116d59')
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,7 +27,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          tag="firmware-$(date -u +%Y-%m-%d)-${GITHUB_SHA::7}"
+          branch="${GITHUB_REF#refs/heads/}"
+          if [ "$branch" = "main" ]; then
+            tag="firmware-$(date -u +%Y-%m-%d)-${GITHUB_SHA::7}"
+          else
+            tag="firmware-${branch}-$(date -u +%Y-%m-%d)-${GITHUB_SHA::7}"
+          fi
           gh release create "$tag" \
             --repo "${{ github.repository }}" \
             --title "$tag" \
